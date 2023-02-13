@@ -25,14 +25,14 @@ function playRound (playerSelection, computerSelection) {
         return`You lost!`;
     }
 }
-let playerPoints = 0
-let computerPoints = 0
-console.log(getComputerSelection())
-let playerSelection = prompt();
-const computerSelection = getComputerSelection();
-console.log(playRound(playerSelection, computerSelection));
+function game() {
 
-function game (){
+    for (let i = 0; i <5; i++) { 
+        const playerSelection = prompt();
+        const computerSelection = getComputerSelection();
+        console.log(playRound(playerSelection, computerSelection))
+        console.log(playerPoints, computerPoints)
     
+    }
 }
-console.log(game())
+    game()
