@@ -1,12 +1,7 @@
+const options = ["rock", "paper", "scissors"];
 function getComputerSelection() {
-    let random = Math.random();
-    if (random < 0.33) {
-      return "rock";
-    } else if (random < 0.66) {
-      return "paper";
-    } else {
-      return "scissors";
-    }
+    const choice = options[Math.floor(Math.random * options.length)];
+    return choice
 }
 
 function playRound (playerSelection, computerSelection) {
@@ -15,23 +10,36 @@ function playRound (playerSelection, computerSelection) {
       (playerSelection == "paper" && computerSelection === "rock") ||
       (playerSelection == "scissors" && computerSelection === "paper")
     ) {
-      playerPoints++;
       return `You won!`;
     } else if (playerSelection === computerSelection) {   
       return `You tied!`
 
     } else {
-        computerPoints++;
         return`You lost!`;
     }
 }
+
+function getPlayerSelection () {
+    let validatedInput = false;
+    while (validatedInput == false){
+        const choice = prompt("Play rock paper sciccors with me pls :)")
+        if (choice == null){
+            continue;
+        }
+        const choiceInLower = choice.toLowerCase();
+        if(options.includes(choiceInLower)){
+        validatedInput = true;
+        return choiceInLower;
+        }
+    }
+}
+
 function game() {
 
     for (let i = 0; i <5; i++) { 
-        const playerSelection = prompt();
+        const playerSelection = getPlayerSelection();
         const computerSelection = getComputerSelection();
         console.log(playRound(playerSelection, computerSelection))
-        console.log(playerPoints, computerPoints)
     
     }
 }
